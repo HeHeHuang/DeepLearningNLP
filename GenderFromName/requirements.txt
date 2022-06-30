@@ -1,0 +1,15 @@
+Flask==2.0.3
+keras==2.6.0
+Keras-Applications==1.0.8
+numpy==1.19.5
+pandas==1.1.5
+plot-keras-history==1.1.36
+requests==2.27.1
+scikit-learn==0.24.2
+scipy==1.5.4
+seaborn==0.11.2
+tensorboard==2.6.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.1
+tensorflow==2.6.2
+tensorflow-estimator==2.6.0

@@ -32,7 +32,7 @@
 
   if other package is missing, please install accordinyly, after environment and package is installed.
 
-3. ### you can run the model.py to train an MLP model with 80% accuracy
+3. ### You can run the model.py to train an LSTM model with 88% accuracy
 
   ```
   python model.py
@@ -40,7 +40,7 @@
 
   The model will be saved in under Model folder
 
-4. ### you can import flask framework to access an web app
+4. ### You can import flask framework to access an web app
 
   in CMD, you can do it by 
 
@@ -54,5 +54,6 @@
   python app.py
   ```
 
+  then,you can access the web by click the link
 
-  then,you can access the web, by click the link after app run
+5. ###  I also attach the TextClassification_GenderFromName.ipynb to show how I do Hyperparameter Tuning.

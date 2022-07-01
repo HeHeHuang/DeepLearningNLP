@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
-from keras.layers import Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout, Flatten, MaxPooling1D, Input, Concatenate
+from keras.layers import Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout, Flatten, MaxPooling1D, Input, Concatenate, LSTM
 from tensorflow.keras import regularizers
 from tensorflow.keras.regularizers import l1, l2
 
@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from plot_keras_history import plot_history
 
 # read data
-df = pd.read_csv('name_gender.csv')
+df = pd.read_csv('./name_gender.csv')
 
 
 def pre_process(name):
@@ -72,15 +72,19 @@ y_train = y_train.astype('float64')
 y_test = y_test.astype('float64')
 y_cv = y_cv.astype('float64')
 
-# create model with 1st hidden lay 512 units, 2rd hidden lay 64. with L2 regularizers
+# Create LSTM model with 128 units and adding L2 regularizer
 model = Sequential()
-model.add(Dense(512, input_dim=maxlen, activation='relu',
-          kernel_regularizer=tf.keras.regularizers.l2(0.001)))
-model.add(Dense(64, activation='relu'))
+# Add an Embedding layer expecting input vocab of size 42, and
+# output embedding dimension of size 64.
+model.add(Embedding(input_dim=42, output_dim=64))
+
+# Add a LSTM layer with 128 internal units.
+model.add(LSTM(128, recurrent_regularizer='l2'))
+
+# Add a Dense layer with 10 units.
 model.add(Dense(1, activation='sigmoid'))
-model.compile(optimizer='adam',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
+model.compile(loss='binary_crossentropy',
+              optimizer='adam', metrics=['accuracy'])
 model.summary()
 
 # epochs=60

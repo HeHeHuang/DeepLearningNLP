@@ -38,7 +38,11 @@
   python model.py
   ```
 
-  The model will be saved in under Model folder
+  It will take 20 mins to save model(depend on your laptop) . 
+
+  The model will be saved in under Model folder.
+
+  if you don't have so much time or you wanna check web app first. you can copy the Model folder from backup folder to GenderFromName. it is trained model. 
 
 4. ### You can import flask framework to access an web app
 
